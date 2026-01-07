@@ -7,7 +7,7 @@ class Item(BaseModel):
   price: float
   tax: Optional[float] = None
 
-class User(BaseModel):
-  username: str
-  full_name: Optional[str] = None
-
+class ItemResp(BaseModel):
+  name: str
+  description: Optional[str] = None
+  price_with_tax: float
