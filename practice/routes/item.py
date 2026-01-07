@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Request, Body
-from ..dto import *
+from ..schemas import *
 
 router = APIRouter()
 

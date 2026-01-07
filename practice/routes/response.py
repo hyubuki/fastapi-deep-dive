@@ -2,7 +2,7 @@ from typing import Optional
 from fastapi import APIRouter, Form, status
 from starlette.responses import JSONResponse, HTMLResponse, RedirectResponse
 
-from practice.dto import *
+from practice.schemas import *
 
 router = APIRouter()
 
