@@ -10,3 +10,4 @@ class Item(BaseModel):
 class User(BaseModel):
   username: str
   full_name: Optional[str] = None
+

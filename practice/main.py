@@ -1,26 +1,21 @@
-from fastapi import FastAPI, Request, Body
-from typing import Optional, Annotated
+from fastapi import FastAPI
 
-from practice.request import Item
+from .routes import *
+
+from starlette.middleware.cors import CORSMiddleware
+from starlette.staticfiles import StaticFiles
 
 app = FastAPI()
+app.include_router(item.router ,prefix="/item", tags=["item"] )
+app.include_router(http_request.router ,prefix="/http_request", tags=["request"] )
+app.include_router(response.router, prefix="/response", tags=["response"])
 
-@app.get("/items/{item_id}")
-async def read_item(request: Request, item_id: int, receipt: str) :
-  client_host = request.client.host
-  headers = request.headers
-  url = request.url
-  http_method = request.method
-  path_params = request.path_params
-  query_params = request.query_params
-
-  return {
-    "item_id": item_id,
-    "client_host": client_host,
-    "headers": headers,
-    "path_params": path_params,
-    "query_params": query_params,
-    "url": url,
-    "http_method": http_method
-    # "item": item
-  }
+app.mount("/static", StaticFiles(directory="static"), name="static")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+    max_age=1
+)

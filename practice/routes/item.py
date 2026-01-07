@@ -1,7 +1,9 @@
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Request, Body
+from ..dto import *
 
-item_router = APIRouter()
+router = APIRouter()
 
-@item_router.get("")
-async def read_items():
-  return {"Hello": "World"}
+@router.post("/items")
+async def read_items(item: Item):
+  return {"item": item, "message": "api success"}
+

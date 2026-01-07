@@ -2,9 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Title</title>
 </head>
 <body>
+  <h1>JSON Response DATA</h1>
+  <pre id="jsonOutput"></pre>
+  <script>
+    const url = 'http://localhost:8000/item/items';
 
+    const body_data = {
+      name: "foo",
+      description: "bar",
+      price: 45.2,
+      tax: 3.5
+    };
+
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body_data)
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('success:', data);
+      const outputElement = document.getElementById('jsonOutput')
+      outputElement.textContent = JSON.stringify(data, null, 2);
+    }).catch((error) => {
+      console.error('error:', error);
+    });
+
+  </script>
 </body>
 </html>

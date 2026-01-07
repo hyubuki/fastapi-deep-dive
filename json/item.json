@@ -1,6 +1,6 @@
 {
   "name": "cookie",
-  "description": "string",
+  "description": "choco chip cookie",
   "price": 1000,
-  "tax": 100
+  "tax": 0.1
 }
