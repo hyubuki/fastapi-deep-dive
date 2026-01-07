@@ -1,0 +1,12 @@
+{
+  "item": {
+    "name": "Foo",
+    "description": "A very nice Item",
+    "price": 35.49,
+    "tax": 3.25
+  },
+  "user": {
+    "username": "dave",
+    "full_name": "Dave Grohl"
+  }
+}
